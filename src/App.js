@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import AdminLogin from './Components/AdminLogin/AdminLogin';
-import AdminRecover from './Components/AdminRecover/AdminRecover';
-import AdminRegister from './Components/AdminRegister/AdminRegister';
+import AdminRecover from './Components/Admin/AdminRecover/AdminRecover';
+import Admin from './Components/Admin/Admin';
 import Companies from './Components/Companies/Companies';
 import AdminAddCompany from './Components/Companies/AdminAddCompany/AdminAddCompany';
 import Services from './Components/Services/Services';
@@ -13,8 +12,7 @@ class App extends Component {
   render() {
     return (
       <section>
-        <AdminRegister />
-        <AdminLogin />
+        <Admin />
         <AdminRecover />
         <Companies />
         <AdminAddCompany />
