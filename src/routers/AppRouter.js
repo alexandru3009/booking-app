@@ -1,23 +1,32 @@
 import React from 'react';
-import { BrowserRouter,Route,Switch } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
+import createHistory from 'history/createBrowserHistory';
+import AdminLogin from '../Components/AdminLogin/AdminLogin';
+import AdminRegister from '../Components/AdminRegister/AdminRegister';
 import LandingPage from '../Components/LandingPage/LandingPage';
-import Register from '../Components/Admin/AdminRegister/AdminRegister';
-import AdminLogin from '../Components/Admin/AdminLogin/AdminLogin';
-import AdminRecover from '../Components/Admin/AdminRecover/AdminRecover';
+import HomePage from '../Components/HomePage/HomePage';
 import Navigation from '../Components/Navigation/Navigation';
+import withAuthentication from '../Components/Authentication/withAuthentication';
+import AdminRecover from '../Components/AdminRecover/AdminRecover';
+
+export const history = createHistory();
+
+
 
 const AppRouter = () => (
-    <BrowserRouter>
+    <Router history ={history}>
         <div>
             <Navigation />
             <Switch>
-                <Route path="/" component={LandingPage} exact={true}/>
-                <Route path="/register" component={Register} />
+                <Route path="/" component={LandingPage} exact={true}  />
+                <Route path="/home" component={HomePage} />
                 <Route path="/login" component={AdminLogin} />
+                <Route path="/register" component={AdminRegister} />
                 <Route path="/recover" component={AdminRecover} />
             </Switch>
         </div>
-    </BrowserRouter>
+    </Router>
 );
 
-export default AppRouter;
+
+export default withAuthentication(AppRouter);

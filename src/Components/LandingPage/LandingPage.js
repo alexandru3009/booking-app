@@ -1,9 +1,14 @@
-import React from 'react'
+import React from 'react';
 
-const LandingPage = () => (
-    <div>
-        You are now on Home Page !
-    </div>
-);
+class LandingPage extends React.Component {
+
+    render() {
+        return (
+            <div>
+                You are now on LandingPage !
+            </div>
+        )
+    }
+};
 
 export default LandingPage;

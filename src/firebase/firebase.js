@@ -6,10 +6,10 @@ const config = {
     authDomain: "booking-application-e9c8f.firebaseapp.com",
     databaseURL: "https://booking-application-e9c8f.firebaseio.com",
     projectId: "booking-application-e9c8f",
-    storageBucket: "",
+    storageBucket: "booking-application-e9c8f.appspot.com",
     messagingSenderId: "133230959925"
   };
-  
+
 if (!firebase.apps.length) {
     firebase.initializeApp(config);
 }
