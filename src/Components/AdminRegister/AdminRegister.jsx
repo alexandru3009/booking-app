@@ -141,7 +141,7 @@ class RegisterForm extends React.Component {
 const RegisterLink = () => (
   <div>
      Don`t have an account?
-    <Link to="/register">Sign Up</Link>
+    <Link to="/register">Click here !</Link>
   </div>
 );
 
