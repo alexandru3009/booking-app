@@ -1,6 +1,8 @@
 import React from 'react';
 import AdminChangePassword from '../AdminChangePassword/AdminChangePassword';
 import AuthUserContext from '../Authentication/AuthUserContext';
+import withAuthorization from '../Authentication/withAuthorization';
+
 
 const AccountPage = ({ history }) => (
     <AuthUserContext.Consumer>
@@ -13,4 +15,7 @@ const AccountPage = ({ history }) => (
     </AuthUserContext.Consumer>
 );
 
-export default AccountPage;
+const authCondition = (authUser) => !!authUser;
+
+
+export default withAuthorization(authCondition)(AccountPage);
