@@ -1,7 +1,7 @@
 import React from 'react';
 import './AdminRegister.css';
 import { Link, withRouter } from 'react-router-dom';
-import { auth } from '../../firebase/index';
+import { auth,db } from '../../firebase/index';
 
 const AdminRegister = ({history}) => (
   <div>
@@ -35,15 +35,44 @@ class RegisterForm extends React.Component {
     e.preventDefault();
     const { firstName,lastName,email,passwordOne} =this.state;
 
-    auth.doCreateUserWithEmailAndPassword(email, passwordOne,firstName,lastName).then(authUser => {
-      this.setState({ ...this.state });
-      this.props.history.push("/login");
-      auth.doSignOut();
-    })
-    .catch(error => {
-      this.setState(byPropKey("error",error));
-    })
-  }
+    // auth.doCreateUserWithEmailAndPassword(email, passwordOne)
+    // .then(authUser => {
+    //     this.setState({ ...this.state });
+    //     this.props.history.push("/");
+    //   })
+    //   .catch(error => {
+    //     this.setState(byPropKey('error', error));
+    //   });
+    // }
+    auth.doCreateUserWithEmailAndPassword(email, passwordOne)
+    .then(authUser => {
+      db.doCreateUser(authUser.user.uid,firstName,lastName,email)
+        this.setState({ ...this.state });
+        this.props.history.push("/login");
+        auth.doSignOut();
+      })
+      .catch(error => {
+        this.setState(byPropKey('error', error));
+      });
+ 
+    }
+  //   auth.doCreateUserWithEmailAndPassword(email, passwordOne)
+  //   .then(authUser => {
+  //     db.doCreateUser(authUser.user.uid,firstName,lastName,email)
+  //     // .then(() => {
+  //       this.setState({ ...this.state });
+  //       this.props.history.push("/login");
+  //       auth.doSignOut();
+  //     })
+  //     .catch(error => {
+  //       this.setState(byPropKey('error', error));
+  //     });
+  // //})
+  // // .catch(error => {
+  // //   this.setState(byPropKey('error', error));
+  // // });
+  //   }
+  
 
   render() {
 
