@@ -2,6 +2,7 @@ import React from 'react';
 import { firebase } from '../../firebase/index';
 import AuthUserContext from './AuthUserContext';
 
+//Higher Order Component
 const withAuthentication = (Component) => {
     class WithAuthentication extends React.Component {
         constructor(props) {

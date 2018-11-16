@@ -73,7 +73,6 @@ class LoginForm extends React.Component {
         {this.state.error && <p>{this.state.error.message}</p>}
         </form>
         
-        
         </div>
     );
   }

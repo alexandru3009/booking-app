@@ -38,6 +38,7 @@ class RegisterForm extends React.Component {
     auth.doCreateUserWithEmailAndPassword(email, passwordOne,firstName,lastName).then(authUser => {
       this.setState({ ...this.state });
       this.props.history.push("/login");
+      auth.doSignOut();
     })
     .catch(error => {
       this.setState(byPropKey("error",error));
