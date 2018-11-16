@@ -8,7 +8,7 @@ import HomePage from '../Components/HomePage/HomePage';
 import Navigation from '../Components/Navigation/Navigation';
 import withAuthentication from '../Components/Authentication/withAuthentication';
 import AdminRecoverPassword from '../Components/AdminRecover/AdminRecover';
-import AdminChangePassword from '../Components/AdminChangePassword/AdminChangePassword';
+import AccountPage from '../Components/AccountPage/AccountPage';
 
 export const history = createHistory();
 
@@ -24,7 +24,7 @@ const AppRouter = () => (
                 <Route path="/login" component={AdminLogin} />
                 <Route path="/register" component={AdminRegister} />
                 <Route path="/recover" component={AdminRecoverPassword} />
-                <Route path="/changepass" component={AdminChangePassword}/>
+                <Route path="/account" component={AccountPage}/>
             </Switch>
         </div>
     </Router>

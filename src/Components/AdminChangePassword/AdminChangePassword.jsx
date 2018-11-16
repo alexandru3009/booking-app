@@ -5,6 +5,7 @@ import { auth } from '../../firebase/index';
 
 const AdminChangePassword = ({ history }) => (
     <div>
+        <h3>Change your password</h3>
         <ChangePassword history={history}/>
     </div>
 )
