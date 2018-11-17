@@ -23,7 +23,8 @@ class RegisterForm extends React.Component {
     passwordOne:'',
     passwordTwo:'',
     iAgree:false,
-    error :null
+    error :null,
+    passType:'input'
   }
 
   
@@ -35,15 +36,7 @@ class RegisterForm extends React.Component {
     e.preventDefault();
     const { firstName,lastName,email,passwordOne} =this.state;
 
-    // auth.doCreateUserWithEmailAndPassword(email, passwordOne)
-    // .then(authUser => {
-    //     this.setState({ ...this.state });
-    //     this.props.history.push("/");
-    //   })
-    //   .catch(error => {
-    //     this.setState(byPropKey('error', error));
-    //   });
-    // }
+    
     auth.doCreateUserWithEmailAndPassword(email, passwordOne)
     .then(authUser => {
       db.doCreateUser(authUser.user.uid,firstName,lastName,email)
@@ -54,24 +47,14 @@ class RegisterForm extends React.Component {
       .catch(error => {
         this.setState(byPropKey('error', error));
       });
- 
     }
-  //   auth.doCreateUserWithEmailAndPassword(email, passwordOne)
-  //   .then(authUser => {
-  //     db.doCreateUser(authUser.user.uid,firstName,lastName,email)
-  //     // .then(() => {
-  //       this.setState({ ...this.state });
-  //       this.props.history.push("/login");
-  //       auth.doSignOut();
-  //     })
-  //     .catch(error => {
-  //       this.setState(byPropKey('error', error));
-  //     });
-  // //})
-  // // .catch(error => {
-  // //   this.setState(byPropKey('error', error));
-  // // });
-  //   }
+
+    showHide = (e) => {
+      e.preventDefault();
+      this.setState({
+        passType:this.state.passType === 'input' ? 'password' : 'input'
+      })
+    }
   
 
   render() {
@@ -127,23 +110,30 @@ class RegisterForm extends React.Component {
         <div>
           <label>
             <span>Password</span>
-            <input 
+            <input
             name="passwordOne"
-            type="password"  
+            type={this.state.passType}
             placeholder="Your password here" 
             value={this.state.passwordOne}
             onChange={e => this.Change(e)}/>
+            <button  onClick={this.showHide}>
+            {this.state.passType === 'input' ? 'Hide' : 'Show'}
+            </button>
           </label>
         </div>
         <div>
           <label>
-            <span>Repeat password</span>
+            <span>Repeat Password</span>
             <input 
             name="passwordTwo"
-            type="password"  
+            type={this.state.passType}
             placeholder="Confirm password" 
             value={this.state.passwordTwo}
             onChange={e => this.Change(e)}/>
+            
+            <button  onClick={this.showHide}>
+            {this.state.passType === 'input' ? 'Hide' : 'Show'}
+            </button>
           </label>
         </div>
 
