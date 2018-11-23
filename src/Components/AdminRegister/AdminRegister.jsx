@@ -7,6 +7,7 @@ const AdminRegister = ({history}) => (
   <div>
     <h1>Sign Up</h1>
     <RegisterForm history={history}/>
+    <Link to="/login">Already have an account ?</Link>
   </div>
 )
 
@@ -27,7 +28,8 @@ class RegisterForm extends React.Component {
     passType:'input',
     errorFirstName:"",
     errorLastName:"",
-    errorPassword:""
+    errorPassword:"",
+    errorEmail:""
   }
 
   
@@ -89,11 +91,29 @@ ValidatePassword = () => {
 return true;
 }
 
+ValidateEmail = () => {
+  const {email} =this.state;
+  let errorEmail="";
+  const testEmail = /^(([^<>()[\].,;:\s@"]+(.[^<>()[\].,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email); 
+  if(!testEmail)
+    {  
+      errorEmail="Please input a valid email"; 
+    }
+
+    if(errorEmail) 
+    {
+      this.setState({errorEmail});
+      return false;
+    }
+    return true;
+}
+
 isNotValid = () => {
   const isFirstNameValid = this.ValidateFirstName();
   const isLastNameValid = this.ValidateLastName();
   const isPasswordValid = this.ValidatePassword();
-  if(!isFirstNameValid || !isLastNameValid || !isPasswordValid) 
+  const isEmailValid = this.ValidateEmail();
+  if(!isFirstNameValid || !isLastNameValid || !isPasswordValid || !isEmailValid ) 
   { return false; 
   }
   return true;
@@ -179,7 +199,7 @@ isNotValid = () => {
             onChange={e => this.Change(e)}/>
           </label>
         </div>
-
+          <div className="e-error">{this.state.errorEmail}</div>
         <div>
           <label>
             <span>Password</span>
