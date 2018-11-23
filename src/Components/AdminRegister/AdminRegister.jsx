@@ -24,31 +24,103 @@ class RegisterForm extends React.Component {
     passwordTwo:'',
     iAgree:false,
     error :null,
-    passType:'input'
+    passType:'input',
+    errorFirstName:"",
+    errorLastName:"",
+    errorPassword:""
   }
 
   
   Change = (e) => {
     this.setState(byPropKey(e.target.name,e.target.value));
   };
+
+  ValidateFirstName = () => {
+    const {firstName} = this.state; 
+    let errorFirstName="";
+    if(firstName.length <= 3 )
+      {
+        errorFirstName= "Invalid name";
+
+      }
+      if(errorFirstName) {
+        this.setState({errorFirstName})
+        return false;
+      }
+      return true;
+  }
+  ValidateLastName = () => {
+    const {lastName} = this.state; 
+    let errorLastName="";
+    if(lastName.length <= 3 || lastName.length > 20)
+      {
+        errorLastName= "Invalid  last name";
+      }
+      if( errorLastName ) {
+        this.setState({ errorLastName })
+        return false;
+      }
+      return true;
+  }
+  
+
+
+ValidatePassword = () => {
+  const {passwordOne} =this.state;
+  let errorPassword = "";
+  if (passwordOne.length < 8) 
+  {
+    errorPassword = "Password must contain at least 8 characters: an Upper case,lower case,number and non alpha numeric !"; 
+  }
+  const hasUpperCase = /[A-Z]/.test(passwordOne);
+  const hasLowerCase = /[a-z]/.test(passwordOne);
+  const hasNumbers = /\d/.test(passwordOne);
+  const hasNonalphas = /\W/.test(passwordOne);
+  if (hasUpperCase + hasLowerCase + hasNumbers + hasNonalphas < 3) 
+  {
+    errorPassword = "Password must contain at least 8 characters: an Upper case,lower case,number and non alpha numeric !"
+  }
+
+  if(errorPassword) 
+    {
+    this.setState({errorPassword});
+    return false;
+    }
+return true;
+}
+
+isNotValid = () => {
+  const isFirstNameValid = this.ValidateFirstName();
+  const isLastNameValid = this.ValidateLastName();
+  const isPasswordValid = this.ValidatePassword();
+  if(!isFirstNameValid || !isLastNameValid || !isPasswordValid) 
+  { return false; 
+  }
+  return true;
+}
   
   onSubmit = (e) => {
     e.preventDefault();
+    
     const { firstName,lastName,email,passwordOne} =this.state;
 
-    
+    const isInvalid = this.isNotValid();
+
+    if(isInvalid) { 
     auth.doCreateUserWithEmailAndPassword(email, passwordOne)
     .then(authUser => {
+      //auth.doEmailVerification(email).then(() => {
       db.doCreateUser(authUser.user.uid,firstName,lastName,email)
         this.setState({ ...this.state });
         this.props.history.push("/login");
         auth.doSignOut();
       })
+    //})
       .catch(error => {
         this.setState(byPropKey('error', error));
       });
     }
-
+  }
     showHide = (e) => {
       e.preventDefault();
       this.setState({
@@ -82,6 +154,7 @@ class RegisterForm extends React.Component {
             onChange={e => this.Change(e)}/>
           </label>
         </div>
+        <div className="e-error">{this.state.errorFirstName}</div>
         
         <div>
           <label >
@@ -94,7 +167,7 @@ class RegisterForm extends React.Component {
             onChange={e => this.Change(e)}/>
           </label>
         </div>
-
+        <div className="e-error">{this.state.errorLastName}</div>
         <div>
           <label>
             <span>Email</span>
@@ -121,6 +194,7 @@ class RegisterForm extends React.Component {
             </button>
           </label>
         </div>
+        <div className="e-error">{this.state.errorPassword}</div>
         <div>
           <label>
             <span>Repeat Password</span>

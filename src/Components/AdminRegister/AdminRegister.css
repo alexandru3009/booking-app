@@ -4,3 +4,7 @@
   background-color: #DDD;
   padding: 20px;
 }
+
+.e-error {
+  color:red;
+}

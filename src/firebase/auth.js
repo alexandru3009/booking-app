@@ -19,6 +19,10 @@ auth.sendPasswordResetEmail(email);
 export const doPasswordUpdate = (password) =>
 auth.currentUser.updatePassword(password);
 
+//Email verification
+// export const doEmailVerification = (email) =>
+// auth.sendEmailVerification(email)
+
 
 
 
