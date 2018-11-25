@@ -15,13 +15,16 @@ const AdminRecoverPassword = () => (
 class RecoverPassword extends React.Component {
     state = {
         email:"",
-        error:null
+        error:null,
+        alert:""
     }
     
     onSubmit = (e) => {
+        const alert="Please check your email !";
         e.preventDefault();
         auth.doPasswordReset(this.state.email).then(() => {
-            this.setState({ ...this.state })
+            
+            this.setState({ ...this.state,alert })
         }).catch(error => {
             this.setState({error});
         })
@@ -37,7 +40,8 @@ class RecoverPassword extends React.Component {
         return (
             <div>
             <form onSubmit={this.onSubmit} className="c-recover-form">  
-                {error && <p>{error.message}</p>}  
+                {error && <p>{error.message}</p>}
+                {alert && <p>{this.state.alert}</p>}  
                 <div>
                     <input type="email" name="email" value={email} placeholder="email adress" onChange={this.onChange}/>   
                 </div>
