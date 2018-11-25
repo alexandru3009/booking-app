@@ -12,9 +12,7 @@ const AdminRegister = ({history}) => (
 )
 
 
-const byPropKey = (propertyName,value) => ({
-  [propertyName] : value
-})
+
 
 class RegisterForm extends React.Component {
   state = {
@@ -33,8 +31,8 @@ class RegisterForm extends React.Component {
   }
 
   
-  Change = (e) => {
-    this.setState(byPropKey(e.target.name,e.target.value));
+  onChange = (e) => {
+    this.setState({[e.target.name] : e.target.value});
   };
 
   ValidateFirstName = () => {
@@ -137,7 +135,7 @@ isNotValid = () => {
       })
     //})
       .catch(error => {
-        this.setState(byPropKey('error', error));
+        this.setState({error});
       });
     }
   }
@@ -150,31 +148,33 @@ isNotValid = () => {
   
 
   render() {
+    const { firstName,lastName,email,passwordOne,passwordTwo,iAgree,error } = this.state;
+    const { passType,errorFirstName,errorLastName,errorEmail,errorPassword } = this.state;
 
     const isInvalid = (
-    this.state.passwordOne !== this.state.passwordTwo ||
-    this.state.passwordOne === '' ||
-    this.state.email === '' || 
-    this.state.firstName === '' ||
-    this.state.lastName === '' ||
-    this.state.iAgree === false
+    passwordOne !== passwordTwo ||
+    passwordOne === '' ||
+    email === '' || 
+    firstName === '' ||
+    lastName === '' ||
+    iAgree === false
     );
 
     return (
       <form onSubmit={this.onSubmit} className="c-register-form">
-      {this.state.error && <p>{this.state.error.message}</p>}
+      {error && <p>{error.message}</p>}
         <div>
           <label htmlFor="firstname">
             <span>Firstname</span>
             <input 
             type="text"  
             name="firstName"
-            value={this.state.firstName} 
+            value={firstName} 
             placeholder="First name" 
-            onChange={e => this.Change(e)}/>
+            onChange={this.onChange}/>
           </label>
         </div>
-        <div className="e-error">{this.state.errorFirstName}</div>
+        <div className="e-error">{errorFirstName}</div>
         
         <div>
           <label >
@@ -183,11 +183,11 @@ isNotValid = () => {
             name="lastName"
             type="text"  
             placeholder="Your lastname here"
-            value={this.state.lastName}
-            onChange={e => this.Change(e)}/>
+            value={lastName}
+            onChange={this.onChange}/>
           </label>
         </div>
-        <div className="e-error">{this.state.errorLastName}</div>
+        <div className="e-error">{errorLastName}</div>
         <div>
           <label>
             <span>Email</span>
@@ -195,38 +195,38 @@ isNotValid = () => {
             name="email"
             type="email" 
             placeholder="Your email here"
-            value={this.state.email}
-            onChange={e => this.Change(e)}/>
+            value={email}
+            onChange={this.onChange}/>
           </label>
         </div>
-          <div className="e-error">{this.state.errorEmail}</div>
+          <div className="e-error">{errorEmail}</div>
         <div>
           <label>
             <span>Password</span>
             <input
             name="passwordOne"
-            type={this.state.passType}
+            type={passType}
             placeholder="Your password here" 
-            value={this.state.passwordOne}
-            onChange={e => this.Change(e)}/>
+            value={passwordOne}
+            onChange={this.onChange}/>
             <button  onClick={this.showHide}>
-            {this.state.passType === 'input' ? 'Hide' : 'Show'}
+            {passType === 'input' ? 'Hide' : 'Show'}
             </button>
           </label>
         </div>
-        <div className="e-error">{this.state.errorPassword}</div>
+        <div className="e-error">{errorPassword}</div>
         <div>
           <label>
             <span>Repeat Password</span>
             <input 
             name="passwordTwo"
-            type={this.state.passType}
+            type={passType}
             placeholder="Confirm password" 
-            value={this.state.passwordTwo}
-            onChange={e => this.Change(e)}/>
+            value={passwordTwo}
+            onChange={this.onChange}/>
             
             <button  onClick={this.showHide}>
-            {this.state.passType === 'input' ? 'Hide' : 'Show'}
+            {passType === 'input' ? 'Hide' : 'Show'}
             </button>
           </label>
         </div>
@@ -236,8 +236,8 @@ isNotValid = () => {
             <span>I agree</span>
             <input type="checkbox" 
             name="iAgree"
-            value={this.state.iAgree}
-            onChange={e => this.Change(e)}
+            value={iAgree}
+            onChange={this.onChange}
             />
           </label>
         </div>

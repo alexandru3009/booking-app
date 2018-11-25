@@ -14,9 +14,6 @@ const AdminLogin = ({history}) => (
   </div>
 )
 
-const byPropKey = (propertyName, value) => () => ({
-  [propertyName] : value
-});
 
 
 class LoginForm extends React.Component {
@@ -37,18 +34,18 @@ class LoginForm extends React.Component {
         this.props.history.push("/home");
       })
       .catch(error => {
-        this.setState(byPropKey('error',error));
+        this.setState({error});
       })
     }
 
-    handleChange = (e) => {
+    onChange = (e) => {
       this.setState({ [e.target.name] : e.target.value })
     }
 
   render() {
-
+    const { email,password,error } = this.state;
     const isInvalid = 
-    this.state.password === '' || this.state.email === '';
+    ( password === '' || email === '' );
     return (
       <div>
         
@@ -56,21 +53,21 @@ class LoginForm extends React.Component {
         <div>
           <label htmlFor="email">
             <span>Email</span>
-            <input type="email" name="email" value={this.state.email} placeholder="email" onChange={this.handleChange} />
+            <input type="email" name="email" value={email} placeholder="email" onChange={this.onChange} />
           </label>
         </div>
 
         <div>
           <label htmlFor="password">
             <span>Password</span>
-            <input type="password" name="password" value={this.state.password} placeholder="password" onChange={this.handleChange}/>
+            <input type="password" name="password" value={password} placeholder="password" onChange={this.onChange}/>
           </label>
         </div>
 
         <button  type="submit" disabled={isInvalid} >
           Sign In
         </button>
-        {this.state.error && <p>{this.state.error.message}</p>}
+        {error && <p>{error.message}</p>}
         </form>
         
         </div>

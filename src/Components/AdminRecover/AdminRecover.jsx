@@ -11,9 +11,6 @@ const AdminRecoverPassword = () => (
     </div>
 )
 
-const byPropKey = (propertyName,value) => ({
-    [propertyName] : value
-});
 
 class RecoverPassword extends React.Component {
     state = {
@@ -26,7 +23,7 @@ class RecoverPassword extends React.Component {
         auth.doPasswordReset(this.state.email).then(() => {
             this.setState({ ...this.state })
         }).catch(error => {
-            this.setState(byPropKey('error',error));
+            this.setState({error});
         })
     }
 
@@ -35,13 +32,14 @@ class RecoverPassword extends React.Component {
     }
     
     render() {
-        const isInvalid = (this.state.email === "")
+        const { email, error } = this.state;
+        const isInvalid = (email === "")
         return (
             <div>
             <form onSubmit={this.onSubmit} className="c-recover-form">  
-                {this.state.error && <p>{this.state.error.message}</p>}  
+                {error && <p>{error.message}</p>}  
                 <div>
-                    <input type="email" name="email" value={this.state.email} placeholder="email adress" onChange={this.onChange}/>   
+                    <input type="email" name="email" value={email} placeholder="email adress" onChange={this.onChange}/>   
                 </div>
                 <button type="submit" disabled={isInvalid}>Recover password</button>
             </form>

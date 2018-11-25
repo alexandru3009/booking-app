@@ -10,7 +10,6 @@ const AdminChangePassword = ({ history }) => (
     </div>
 )
 
-const byPropKey = (propertyName,value) =>({ [propertyName] : value });
 
 class ChangePassword extends React.Component {
     state = {
@@ -30,12 +29,12 @@ class ChangePassword extends React.Component {
             this.props.history.push("/login");
             auth.doSignOut();
         }).catch(error => {
-            this.setState(byPropKey('error' , error));
+            this.setState({ error });
         });
     }
 
     render() {
-        const {passwordOne,passwordTwo,error} =this.state;
+        const { passwordOne,passwordTwo,error } =this.state;
         const isInvalid = ( passwordOne !== passwordTwo || passwordOne==='' || passwordTwo==='')
         return (
             <div>
