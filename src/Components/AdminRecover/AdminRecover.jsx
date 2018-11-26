@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const AdminRecoverPassword = () => (
     <div>
-        <h1>Recover your password</h1>
+        
         <RecoverPassword />
     </div>
 )
@@ -38,14 +38,17 @@ class RecoverPassword extends React.Component {
         const { email, error } = this.state;
         const isInvalid = (email === "")
         return (
-            <div>
-            <form onSubmit={this.onSubmit} className="c-recover-form">  
+            <div className="c-recover-form">
+            <h1>Recover your password</h1>
+            
+            <form onSubmit={this.onSubmit} >  
                 {error && <p>{error.message}</p>}
                 {alert && <p>{this.state.alert}</p>}  
+                <span>Email</span>
                 <div>
-                    <input type="email" name="email" value={email} placeholder="email adress" onChange={this.onChange}/>   
+                    <input type="email" name="email" value={email} placeholder="email" onChange={this.onChange}/>   
                 </div>
-                <button type="submit" disabled={isInvalid}>Recover password</button>
+                <button type="submit" disabled={isInvalid}>Recover</button>
             </form>
             </div>
         );
