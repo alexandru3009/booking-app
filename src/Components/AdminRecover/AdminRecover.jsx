@@ -16,7 +16,7 @@ class RecoverPassword extends React.Component {
     state = {
         email:"",
         error:null,
-        alert:""
+        errorEmail:""
     }
     
     onSubmit = (e) => {
@@ -26,8 +26,16 @@ class RecoverPassword extends React.Component {
             
             this.setState({ ...this.state,alert })
         }).catch(error => {
-            this.setState({error});
+            let errorEmail="";
+
+            if(error.code ==='auth/user-not-found') {
+                errorEmail = "There is no such user in our database ! Please enter a valid email or register !";
+            }
+            if(errorEmail) {
+                this.setState({errorEmail});
+            }
         })
+    
     }
 
     onChange = (e) => {
@@ -35,14 +43,14 @@ class RecoverPassword extends React.Component {
     }
     
     render() {
-        const { email, error } = this.state;
+        const { email, errorEmail } = this.state;
         const isInvalid = (email === "")
         return (
             <div className="c-recover-form">
             <h1>Recover your password</h1>
             
             <form onSubmit={this.onSubmit} >  
-                {error && <p>{error.message}</p>}
+                {errorEmail && <p>{errorEmail}</p>}
                 {alert && <p>{this.state.alert}</p>}  
                 <span>Email</span>
                 <div>
