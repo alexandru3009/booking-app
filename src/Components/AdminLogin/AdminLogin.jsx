@@ -6,11 +6,9 @@ import { Link } from 'react-router-dom';
 
 const AdminLogin = ({history}) => (
   <div>
-    <h1>Sign In</h1>
-    <LoginForm history={history}/>
-    <RegisterLink />
     
-    <Link to="/recover">Forgot password?</Link>
+    <LoginForm history={history}/>
+    
   </div>
 )
 
@@ -22,19 +20,35 @@ class LoginForm extends React.Component {
     this.state = {
       email:"",
       password:"",
-      error: null
+      error: null,
+      errorLogin:"",
+      errorForgotPassword:"",
+      passType:"input"
     }
   }
     
     onSubmit = (e) => {
       const {email,password} = this.state;
+      
       e.preventDefault();
       auth.doSignInWithEmailAndPassword(email,password).then(() => {
         this.setState({ ...this.state });
         this.props.history.push("/home");
       })
       .catch(error => {
-        this.setState({error});
+        let errorLogin="";
+        let errorForgotPassword="";
+        //Here we changed firebase generic errors
+        if(error.code==='auth/wrong-password') {
+          errorForgotPassword = " Forgot password?"
+        } else
+        errorLogin="There is no such user in our database ! Please enter a valid email or register !";
+        if(errorLogin) {
+          this.setState({errorLogin})
+        };
+        if(errorForgotPassword) {
+          this.setState({errorForgotPassword})
+        };
       })
     }
 
@@ -42,32 +56,51 @@ class LoginForm extends React.Component {
       this.setState({ [e.target.name] : e.target.value })
     }
 
+    showHide = (e) => {
+      e.preventDefault();
+      this.setState({
+        passType:this.state.passType === 'input' ? 'password' : 'input'
+      })
+    }
+
   render() {
-    const { email,password,error } = this.state;
+    const { email,password,errorLogin,passType,errorForgotPassword } = this.state;
     const isInvalid = 
     ( password === '' || email === '' );
     return (
-      <div>
-        
-        <form onSubmit={this.onSubmit} className="c-login-form">
+      <div className="c-login-form">
+
+        <h1>Log in</h1>
+        { errorLogin && <p>{errorLogin}</p> }
+        {errorForgotPassword && <Link to="/recover">{errorForgotPassword}</Link>}
+        <form onSubmit={this.onSubmit} >
+        <span>Email</span>
         <div>
           <label htmlFor="email">
-            <span>Email</span>
             <input type="email" name="email" value={email} placeholder="email" onChange={this.onChange} />
           </label>
         </div>
 
+        <span>Password</span>
         <div>
-          <label htmlFor="password">
-            <span>Password</span>
-            <input type="password" name="password" value={password} placeholder="password" onChange={this.onChange}/>
+          <label htmlFor="password"> 
+            <input type={passType} name="password" value={password} placeholder="password" onChange={this.onChange}/>
           </label>
+            <button  onClick={this.showHide}>
+            {passType === 'input' ? 'Hide' : 'Show'}
+            </button>
         </div>
+
+        
 
         <button  type="submit" disabled={isInvalid} >
           Sign In
         </button>
-        {error && <p>{error.message}</p>}
+        <div><label>
+        <RegisterLink />
+        
+        </label>
+        </div>
         </form>
         
         </div>
