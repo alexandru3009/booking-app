@@ -1,7 +1,7 @@
 import React from 'react';
 import './AdminRegister.css';
 import { Link, withRouter } from 'react-router-dom';
-import { auth,db } from '../../firebase/index';
+import { auth,db } from '../../../firebase/index';
 
 const AdminRegister = ({history}) => (
   <div>

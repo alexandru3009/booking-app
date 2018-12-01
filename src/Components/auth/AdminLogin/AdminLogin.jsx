@@ -1,7 +1,7 @@
 import React from 'react';
 import './AdminLogin.css'
 import { RegisterLink } from '../AdminRegister/AdminRegister';
-import { auth } from '../../firebase/index';
+import { auth } from '../../../firebase/index';
 import { Link } from 'react-router-dom';
 
 const AdminLogin = ({history}) => (

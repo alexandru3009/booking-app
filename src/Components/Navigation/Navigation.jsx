@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import SignOutButton from '../AdminSignOut/SignOut';
+import SignOutButton from '../auth/AdminSignOut/SignOut';
 import AuthUserContext from '../Authentication/AuthUserContext';
 
 const Navigation = ({ authUser }) => (

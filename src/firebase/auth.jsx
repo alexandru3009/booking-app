@@ -21,7 +21,7 @@ auth.currentUser.updatePassword(password);
 
 //Email verification
 // export const doEmailVerification = (email) =>
-// auth.sendEmailVerification(email)
+// auth.currentUser.sendEmailVerification(email)
 
 
 

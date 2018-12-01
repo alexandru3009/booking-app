@@ -1,6 +1,6 @@
 import React from 'react';
 import './AdminChangePassword.css';
-import { auth } from '../../firebase/index';
+import { auth } from '../../../firebase/index';
 
 
 const AdminChangePassword = ({ history }) => (

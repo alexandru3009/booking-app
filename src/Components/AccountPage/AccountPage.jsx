@@ -1,9 +1,7 @@
 import React from 'react';
-import AdminChangePassword from '../AdminChangePassword/AdminChangePassword';
+import AdminChangePassword from '../auth/AdminChangePassword/AdminChangePassword';
 import AuthUserContext from '../Authentication/AuthUserContext';
 import withAuthorization from '../Authentication/withAuthorization';
-import { auth } from 'firebase';
-
 
 const AccountPage = ({ history }) => (
     <AuthUserContext.Consumer>

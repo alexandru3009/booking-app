@@ -1,6 +1,6 @@
 import React from 'react';
 import './AdminRecoverPassword.css';
-import { auth } from '../../firebase/index';
+import { auth } from '../../../firebase/index';
 import { Link } from 'react-router-dom';
 
 
