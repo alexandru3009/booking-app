@@ -19,6 +19,7 @@ const NavigationAuth = () => (
         <div>
             <NavLink to="/home" activeClassName="is-active" >Home     </NavLink>
             <NavLink to="/account" activeClassName="is-active"> Account</NavLink>
+            <NavLink to="/addcompany" activeClassName="is-active">Add Company</NavLink>
             <SignOutButton />
         </div>
     </header>
