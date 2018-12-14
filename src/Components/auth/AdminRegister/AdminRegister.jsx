@@ -122,9 +122,9 @@ isNotValid = () => {
     
     const { firstName,lastName,email,passwordOne} =this.state;
 
-    const isInvalid = this.isNotValid();
+    const isValid = this.isNotValid();
 
-    if(isInvalid) { 
+    if(isValid) { 
     auth.doCreateUserWithEmailAndPassword(email, passwordOne)
     .then(authUser => {
       //auth.doEmailVerification(email).then(() => {

@@ -1,10 +1,14 @@
 import React from 'react';
+import { db } from '../../../firebase/index';
+
+
 
 class AddCompany extends React.Component {
     state = {
-        companyName : "",
-        description: "",
-        logo : ""
+        companyName:"",
+        companyDescription:"",
+        errorName:null,
+        errorDescription:null
     }
 
     onChange = (e) => {
@@ -13,11 +17,26 @@ class AddCompany extends React.Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state);
+        const {companyName,companyDescription,logo} = this.state;
+        if(companyName==="")
+        {
+            this.setState({errorName:"Please add a company name"});
+        }
+        else if(companyDescription==="")
+        {
+            this.setState({errorDescription:"Please add a company description"});
+        }
+        else
+
+        {
+        db.doCreateCompany(companyName,companyDescription,logo)
+        this.setState({ ...this.state });
+        }
     }
+    
 
     render() {
-        const { companyName, description,logo } = this.state;
+        const { companyName, companyDescription,logo,errorName,errorDescription } = this.state;
         return (
             <div>
                 <form onSubmit={this.onSubmit}>
@@ -26,13 +45,16 @@ class AddCompany extends React.Component {
                     <label>
                         <input type="text" name="companyName" value={companyName} placeholder="Company Name" onChange={this.onChange}/>
                     </label>
+                    
                     </div>
+                    {errorName ? <p>{errorName}</p> : null}
                     <span>Description</span>
                     <div>
                     <label>
-                        <textarea name="description" value={description} placeholder="Describe your company" onChange={this.onChange} />
+                        <textarea name="companyDescription" value={companyDescription} placeholder="Describe your company" onChange={this.onChange} />
                     </label>
                     </div>
+                    {errorDescription ? <p>{errorDescription}</p>:null}
                     <span>Your company logo</span>
                     <div>
                         <input type="file" accept ="/image" name="logo" value={logo} placeholder="Add your company logo" onChange={this.onChange} />
