@@ -1,5 +1,5 @@
 import React from 'react';
-import AdminChangePassword from '../auth/AdminChangePassword/AdminChangePassword';
+import AdminChangePassword from '../auth/ChangePassword';
 import AuthUserContext from '../Authentication/AuthUserContext';
 import withAuthorization from '../Authentication/withAuthorization';
 

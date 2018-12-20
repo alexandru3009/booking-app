@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import SignOutButton from '../auth/AdminSignOut/SignOut';
+import SignOutButton from '../auth/Logout';
 import AuthUserContext from '../Authentication/AuthUserContext';
 
 const Navigation = ({ authUser }) => (
@@ -17,9 +17,10 @@ const Navigation = ({ authUser }) => (
 const NavigationAuth = () => (
     <header>
         <div>
-            <NavLink to="/home" activeClassName="is-active" >Home     </NavLink>
+            <NavLink to="/home" activeClassName="is-active" >Home</NavLink>
             <NavLink to="/account" activeClassName="is-active"> Account</NavLink>
             <NavLink to="/addcompany" activeClassName="is-active">Add Company</NavLink>
+            <NavLink to="/addservices" activeClassName="is-active">Services</NavLink>
             <SignOutButton />
         </div>
     </header>
@@ -27,7 +28,7 @@ const NavigationAuth = () => (
 const NavigationNonAuth = () => (
     <header>
         <NavLink to="/" activeClassName="is-active">Home</NavLink>
-        <NavLink to="/register" activeClassName="is-active">  Register account  </NavLink>
+        <NavLink to="/register" activeClassName="is-active">Register account</NavLink>
         <NavLink to="/login" activeClassName="is-active">Login</NavLink>
         <NavLink to="/recover" activeClassName="is-active">  Recover Password  </NavLink>
     </header>

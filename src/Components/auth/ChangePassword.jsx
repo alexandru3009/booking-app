@@ -1,6 +1,6 @@
 import React from 'react';
-import './AdminChangePassword.css';
-import { auth } from '../../../firebase/index';
+import './Auth.css';
+import { auth } from '../../firebase/index';
 
 
 const AdminChangePassword = ({ history }) => (
@@ -45,14 +45,16 @@ class ChangePassword extends React.Component {
         const { passwordOne,passwordTwo,error,passType } =this.state;
         const isInvalid = ( passwordOne !== passwordTwo || passwordOne==='' || passwordTwo==='')
         return (
-            <div className="c-change-form">
-                <h3>Change your password</h3>
-                <form  onSubmit={this.onSubmit}>
+            <div>
+                
+                <form  onSubmit={this.onSubmit} className="c-auth-form">
+                    <h3>Change your password</h3>
                     {error && <p>{error.message}</p>}
                     <span>New password</span>
                     <div>
                         <label>
-                            <input type={passType} name="passwordOne" value={passwordOne} placeholder="password" onChange={this.onChange}/>
+                            <input type={passType} name="passwordOne" value={passwordOne} placeholder="password" 
+                            onChange={this.onChange} className="i-input-auth"/>
                         </label>
                         <button  onClick={this.showHide}>
                         {passType === 'input' ? 'Hide' : 'Show'}
@@ -61,7 +63,8 @@ class ChangePassword extends React.Component {
                     <span>Confirm password</span>
                     <div>
                         <label>
-                            <input type={passType} name="passwordTwo" value={passwordTwo} placeholder="Confirm password" onChange={this.onChange} />
+                            <input type={passType} name="passwordTwo" value={passwordTwo} placeholder="Confirm password" 
+                            onChange={this.onChange} className="i-input-auth"/>
                         </label>
                     </div>
                     <button type="submit" disabled={isInvalid}>Change password</button>

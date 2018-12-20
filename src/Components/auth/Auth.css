@@ -1,0 +1,63 @@
+.c-auth-form {
+  /* max-width: 300px sau 100% pentru lungimean inputului
+  
+  */
+  width: 500px;
+  margin: 50px auto;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 20px;
+  border:none;
+  border-bottom: .6rem solid darken(purple, 10%);
+  box-sizing:border-box;
+  border-radius: 5px;
+}
+
+.i-input-auth {
+  height:30px;
+  border-radius:8px;
+  font-size:15pt;
+  width: 60%;
+}
+
+.password-condition {
+  font-size:13px;
+}
+
+.button-auth {
+  background: rgba(255, 255, 255, 0.952);
+  font-weight: bold;
+  width:60%;
+  color:black;
+  border:none;
+  height:40px;
+  font-size:15pt;
+  border-radius:10px;
+  cursor:pointer;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  /* background: white;
+    border: none;
+    border-bottom: .6rem solid darken(white, 10%);
+    color: purple;
+    font-weight: bold;
+    font-size: 3.2rem;
+    margin-bottom: 3.6rem;
+    padding: 2.4rem;
+    width: 100%; */
+}
+
+.button-auth:disabled {
+  opacity: 0.5;
+}
+
+.e-error {
+  color:red;
+  font-style: italic;
+  padding: 2px;
+}
+
+.button-logout {
+  position:fixed;
+  top:5px;
+  right:10px;
+}

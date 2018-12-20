@@ -1,7 +1,7 @@
 import React from 'react';
-import './AdminLogin.css'
-import { RegisterLink } from '../AdminRegister/AdminRegister';
-import { auth } from '../../../firebase/index';
+import './Auth.css'
+import { RegisterLink } from './Register';
+import { auth } from '../../firebase/index';
 import { Link } from 'react-router-dom';
 
 const AdminLogin = ({history}) => (
@@ -23,7 +23,7 @@ class LoginForm extends React.Component {
       error: null,
       errorLogin:"",
       errorForgotPassword:"",
-      passType:"input"
+      passType:"password"
     }
   }
     
@@ -68,23 +68,23 @@ class LoginForm extends React.Component {
     const isInvalid = 
     ( password === '' || email === '' );
     return (
-      <div className="c-login-form">
+      <div className="c-auth-form">
 
-        <h1>Log in</h1>
-        { errorLogin && <p>{errorLogin}</p> }
+        <h1>Login</h1>
+        { errorLogin && <p className="e-error">{errorLogin}</p> }
         {errorForgotPassword && <Link to="/recover">{errorForgotPassword}</Link>}
         <form onSubmit={this.onSubmit} >
         <span>Email</span>
         <div>
           <label htmlFor="email">
-            <input type="email" name="email" value={email} placeholder="email" onChange={this.onChange} />
+            <input type="email" name="email" value={email} placeholder="email" onChange={this.onChange} className="i-input-auth" />
           </label>
         </div>
 
         <span>Password</span>
         <div>
           <label htmlFor="password"> 
-            <input type={passType} name="password" value={password} placeholder="password" onChange={this.onChange}/>
+            <input type={passType} name="password" value={password} placeholder="password" onChange={this.onChange} className="i-input-auth" width="20%"/>
           </label>
             <button  onClick={this.showHide}>
             {passType === 'input' ? 'Hide' : 'Show'}
@@ -93,8 +93,8 @@ class LoginForm extends React.Component {
 
         
 
-        <button  type="submit" disabled={isInvalid} >
-          Sign In
+        <button  type="submit" disabled={isInvalid} className="button-auth" >
+          Login
         </button>
         <div><label>
         <RegisterLink />

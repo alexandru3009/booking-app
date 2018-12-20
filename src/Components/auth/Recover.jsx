@@ -1,6 +1,6 @@
 import React from 'react';
-import './AdminRecoverPassword.css';
-import { auth } from '../../../firebase/index';
+import './Auth.css';
+import { auth } from '../../firebase/index';
 import { Link } from 'react-router-dom';
 
 
@@ -46,15 +46,17 @@ class RecoverPassword extends React.Component {
         const { email, errorEmail } = this.state;
         const isInvalid = (email === "")
         return (
-            <div className="c-recover-form">
+            <div className="c-auth-form">
             <h1>Recover your password</h1>
             
             <form onSubmit={this.onSubmit} >  
-                {errorEmail && <p>{errorEmail}</p>}
+                {errorEmail && <p className="e-error">{errorEmail}</p>}
                 {alert && <p>{this.state.alert}</p>}  
                 <span>Email</span>
                 <div>
-                    <input type="email" name="email" value={email} placeholder="email" onChange={this.onChange}/>   
+                    <input type="email" name="email" value={email} placeholder="email" 
+                    onChange={this.onChange} className="i-input-auth"
+                    />   
                 </div>
                 <button type="submit" disabled={isInvalid}>Recover</button>
             </form>

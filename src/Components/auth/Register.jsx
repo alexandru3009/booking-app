@@ -1,13 +1,13 @@
 import React from 'react';
-import './AdminRegister.css';
+import './Auth.css';
 import { Link, withRouter } from 'react-router-dom';
-import { auth,db } from '../../../firebase/index';
+import { auth,db } from '../../firebase/index';
 
 const AdminRegister = ({history}) => (
   <div>
-    <h1>Sign Up</h1>
+    
     <RegisterForm history={history}/>
-    <Link to="/login">Already have an account ?</Link>
+    
   </div>
 )
 
@@ -23,7 +23,7 @@ class RegisterForm extends React.Component {
     passwordTwo:'',
     iAgree:false,
     error :null,
-    passType:'input',
+    passType:'password',
     errorFirstName:"",
     errorLastName:"",
     errorPassword:"",
@@ -68,9 +68,9 @@ class RegisterForm extends React.Component {
 ValidatePassword = () => {
   const {passwordOne} =this.state;
   let errorPassword = "";
-  if (passwordOne.length < 8) 
+  if (passwordOne.length < 12) 
   {
-    errorPassword = "Password must contain at least 8 characters: an Upper case,lower case,number and non alpha numeric !"; 
+    errorPassword = "Password must contain at least 12 characters: an Upper case,lower case,number and non alpha numeric !"; 
   }
   const hasUpperCase = /[A-Z]/.test(passwordOne);
   const hasLowerCase = /[a-z]/.test(passwordOne);
@@ -78,7 +78,7 @@ ValidatePassword = () => {
   const hasNonalphas = /\W/.test(passwordOne);
   if (hasUpperCase + hasLowerCase + hasNumbers + hasNonalphas < 3) 
   {
-    errorPassword = "Password must contain at least 8 characters: an Upper case,lower case,number and non alpha numeric !"
+    errorPassword = "Password must contain at least 12 characters: an Upper case,lower case,number and non alpha numeric !"
   }
 
   if(errorPassword) 
@@ -161,12 +161,16 @@ isNotValid = () => {
     );
 
     return (
-      <form onSubmit={this.onSubmit} className="c-register-form">
-      {error && <p>{error.message}</p>}
+      
+      
+      <form onSubmit={this.onSubmit} className="c-auth-form">
+      <h1>Create your account </h1>
+      {error && <p className="e-error">{error.message}</p>}
+      <span>First name</span>
         <div>
           <label htmlFor="firstname">
-            <span>Firstname</span>
             <input 
+            className="i-input-auth"
             type="text"  
             name="firstName"
             value={firstName} 
@@ -175,11 +179,11 @@ isNotValid = () => {
           </label>
         </div>
         <div className="e-error">{errorFirstName}</div>
-        
+
+        <span>Last name</span>
         <div>
-          <label >
-            <span>Last name</span>
-            <input 
+          <label htmlFor="lastname">
+            <input className="i-input-auth"
             name="lastName"
             type="text"  
             placeholder="Your lastname here"
@@ -188,10 +192,12 @@ isNotValid = () => {
           </label>
         </div>
         <div className="e-error">{errorLastName}</div>
+
+        <span>Email</span>
         <div>
           <label>
-            <span>Email</span>
             <input 
+            className="i-input-auth"
             name="email"
             type="email" 
             placeholder="Your email here"
@@ -200,10 +206,12 @@ isNotValid = () => {
           </label>
         </div>
           <div className="e-error">{errorEmail}</div>
+
+          <span>Password</span>
         <div>
           <label>
-            <span>Password</span>
             <input
+            className="i-input-auth"
             name="passwordOne"
             type={passType}
             placeholder="Your password here" 
@@ -214,26 +222,26 @@ isNotValid = () => {
             </button>
           </label>
         </div>
+        <span className="password-condition">Password must contain at least 12 characters.</span>
         <div className="e-error">{errorPassword}</div>
+
+        <span>Repeat Password</span>
         <div>
           <label>
-            <span>Repeat Password</span>
             <input 
+            className="i-input-auth"
             name="passwordTwo"
             type={passType}
             placeholder="Confirm password" 
             value={passwordTwo}
             onChange={this.onChange}/>
             
-            <button  onClick={this.showHide}>
-            {passType === 'input' ? 'Hide' : 'Show'}
-            </button>
           </label>
         </div>
 
         <div>
           <label>
-            <span>I agree</span>
+            <span><em>I agree with terms and conditions</em></span>
             <input type="checkbox" 
             name="iAgree"
             value={iAgree}
@@ -243,11 +251,14 @@ isNotValid = () => {
         </div>
 
         
-        <button  disabled={isInvalid} type="submit">
-          Sign Up
+        <button  disabled={isInvalid} type="submit" className="button-auth">
+          Register
         </button>
-       
+        <br />
+        <Link to="/login">Already have an account ?</Link>
       </form>
+      
+      
     );
   }
 };
@@ -262,3 +273,4 @@ const RegisterLink = () => (
 export default withRouter(AdminRegister);
 
 export {  RegisterLink, RegisterForm };
+
