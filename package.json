@@ -2,7 +2,12 @@
   "name": "booking-app",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "npm":"5.6.0",
+    "node":"8.11.3"
+  },
   "dependencies": {
+    "express": "^4.16.4",
     "firebase": "^5.5.8",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
@@ -11,6 +16,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "starth":"node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
