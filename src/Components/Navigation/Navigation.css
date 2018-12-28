@@ -1,0 +1,15 @@
+.header-style {
+    font-size:20px;
+    color:blue;
+    text-align: center;
+}
+
+.is-active {
+    color:blue;
+    font-weight: bold;
+    background-color:lightblue;
+}
+
+.title-style {
+    font-style: "Comic Sans MS";
+}
