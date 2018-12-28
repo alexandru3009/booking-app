@@ -16,7 +16,7 @@ class ChangePassword extends React.Component {
         passwordOne:'',
         passwordTwo:'',
         error:null,
-        passType:'input'
+        passType:'password'
     }
 
     onChange = (e) => {
@@ -67,7 +67,7 @@ class ChangePassword extends React.Component {
                             onChange={this.onChange} className="i-input-auth"/>
                         </label>
                     </div>
-                    <button type="submit" disabled={isInvalid}>Change password</button>
+                    <button type="submit" disabled={isInvalid} className="button-auth">Change password</button>
                 </form>
             </div>
         )

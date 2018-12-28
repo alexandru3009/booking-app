@@ -8,22 +8,26 @@ export const doCreateUser = (id, firstName, lastName, email) => {
     });
 }
 
-
-export const onceGetUsers = () => {
-    db.ref('users').once('value');
+export const createCompany = (companyName,companyDescription) => {
+const companiesRef = db.ref(`/companies`);
+    const company = {
+      companyDescription,
+      companyName
+    }
+    companiesRef.push(company);
 }
 
+export const createService = (serviceName,serviceDescription,availability,spaces,duration,price) => {
+    const serviceRef = db.ref(`/services`);
+        const service = {
+            serviceName,
+            serviceDescription,
+            availability,
+            spaces,
+            duration,
+            price
+        }
+        serviceRef.push(service);
+    }
 
-export const doCreateCompany = (companyName,companyDescription) => {
-    db.ref(`companies`).push({
-        companyName,
-        companyDescription
-    });
-}
-
-export const doCreateService = (serviceDescription,serviceName,spaces,duration,price,availability) => {
-    db.ref(`services`).push({
-        serviceDescription,serviceName,duration,spaces,price,availability
-    });
-}
 

@@ -10,12 +10,10 @@ import HomePage from '../Components/HomePage/HomePage';
 import AccountPage from '../Components/AccountPage/AccountPage';
 import NotFoundPage from '../Components/NotFoundPage/NotFoundPage';
 import withAuthentication from '../Components/Authentication/withAuthentication';
-import AddCompany from '../Components/Companies/AddCompanies/AddCompany';
-import AddServices from '../Components/Services/AdminAddServices/AdminAddServices';
+import AddCompany from '../Components/Companies/AddCompany';
+import AddServices from '../Components/Services/AddServices';
 
 export const history = createHistory();
-
-
 
 const AppRouter = () => (
     <Router history ={history}>
@@ -36,5 +34,4 @@ const AppRouter = () => (
     </Router>
 );
 
-//Higher order component
 export default withAuthentication(AppRouter);

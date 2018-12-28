@@ -7,7 +7,6 @@ const AccountPage = ({ history }) => (
     <AuthUserContext.Consumer>
     {authUser =>
         <div>
-        <h3>First Name:</h3>
         <h4>Email:{authUser.email}</h4>
         <AdminChangePassword history={history} />
         </div>

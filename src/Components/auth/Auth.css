@@ -1,7 +1,4 @@
 .c-auth-form {
-  /* max-width: 300px sau 100% pentru lungimean inputului
-  
-  */
   width: 500px;
   margin: 50px auto;
   border-radius: 5px;
@@ -35,19 +32,10 @@
   border-radius:10px;
   cursor:pointer;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-  /* background: white;
-    border: none;
-    border-bottom: .6rem solid darken(white, 10%);
-    color: purple;
-    font-weight: bold;
-    font-size: 3.2rem;
-    margin-bottom: 3.6rem;
-    padding: 2.4rem;
-    width: 100%; */
 }
 
 .button-auth:disabled {
-  opacity: 0.5;
+  opacity: 0.4;
 }
 
 .e-error {
