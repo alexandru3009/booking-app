@@ -20,14 +20,5 @@ const db = firebase.database();
 
 export { auth, db };
 
-// class Firebase {
-//     constructor() {
-//         app.initializeApp(config);
-//         this.auth = app.auth();
-//         this.db = app.database();
-//     }
-// }
-
-// export default Firebase;
 
 

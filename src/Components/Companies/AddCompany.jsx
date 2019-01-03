@@ -1,25 +1,37 @@
 import React from 'react';
 import './Companies.css';
-import { db} from '../../firebase/index';
+import { db } from '../../firebase/firebase';
 
 
 class AddCompany extends React.Component {
-    state = {
-        companyName:"",
-        companyDescription:"",
-        companyLogo:"",
+    constructor(props) {
+        super(props);
+        this.state = {
+            companyName:"",
+            companyDescription:"",
+            companyLogo:""
+        }
     }
-
+    
     onChange = (e) => {
         this.setState({[e.target.name] : e.target.value });
     }
 
     onSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state)
-        db.createCompany(this.state.companyDescription,this.state.companyName)
+        const companiesRef = db.ref('companies');
+        const company = {
+          companyDescription: this.state.companyDescription,
+          companyName:this.state.companyName,
+          user: this.props.userId
+        }
+        companiesRef.push(company);
+        this.setState({
+          companyDescription: '',
+          companyName:''
+        });
         this.props.history.push("/home");
-    }
+      }
 
     render() {
         
@@ -30,6 +42,7 @@ class AddCompany extends React.Component {
                 <form onSubmit={this.onSubmit} className="c-companies-form">
                     <h1>Add a new company</h1>
                     <b>Company name</b>
+                    <p>{this.props.userId}</p>
                     <div>
                         <label>
                         <input type="text" name="companyName" value={companyName} placeholder="Company name" onChange={this.onChange} className="i-input-company"/>
@@ -46,7 +59,7 @@ class AddCompany extends React.Component {
                     <div>
                         <input type="file" accept ="/image" name="companyLogo" value={companyLogo} placeholder="Add your company logo" onChange={this.onChange} />
                     </div>
-                        <button type="submit" className="button-company" disabled={isInvalid}>Add company</button>
+                        <button type="submit" className="button-company" disabled={this.isInvalid} >Add company</button>
                 </form>
             </div>
         );
