@@ -6,18 +6,18 @@ import SignOutButton from '../auth/Logout';
 import AuthUserContext from '../Authentication/AuthUserContext';
 
 const Navigation = () => (
-    <header>
-        <div className="header-style">
-        <h1>Booking application</h1>
-        <img src={book} alt="book" />
-            <AuthUserContext.Consumer>
-                { authUser => authUser ? <NavigationAuth/> : <NavigationNonAuth/> }
-            </AuthUserContext.Consumer>
-        </div>
-    </header>
+    <AuthUserContext.Consumer>
+        { authUser => 
+            <div className="header-style">
+                <h1>Booking application</h1>
+                { authUser ? null : <img src={book} alt="book" />  }
+                { authUser ? <NavigationAdmin/> : <NavigationPublic/> }
+            </div> 
+        } 
+    </AuthUserContext.Consumer>
 );
 
-const NavigationAuth = () => (
+const NavigationAdmin = () => (
     <header>
         <div>
             <NavLink to="/home" activeClassName="is-active" >Home</NavLink>
@@ -28,7 +28,7 @@ const NavigationAuth = () => (
         </div>
     </header>
 );
-const NavigationNonAuth = () => (
+const NavigationPublic = () => (
     <header>
         <NavLink to="/" activeClassName="is-active" exact={true}>Home</NavLink>
         <NavLink to="/register" activeClassName="is-active">Register account</NavLink>
