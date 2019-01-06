@@ -86,7 +86,7 @@ class LoginForm extends React.Component {
           <label htmlFor="password"> 
             <input type={passType} name="password" value={password} placeholder="password" onChange={this.onChange} className="i-input-auth" width="20%"/>
           </label>
-            <button  onClick={this.showHide}>
+            <button  onClick={this.showHide} className="button-show-hide">
             {passType === 'input' ? 'Hide' : 'Show'}
             </button>
         </div>

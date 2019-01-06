@@ -71,29 +71,5 @@ class HomePage extends React.Component {
         }
     }
 
-    // <div>
-    //     <h1>This is my Home Page !</h1>
-            
-    //     <ul>
-    //                 {this.state.companies.map((company) => {
-    //                   return (
-    //                     <div key={company.id}>
-    //                     <li>
-    //                       <p>{company.id}</p>
-    //                       <h3>{company.companyDescription}</h3>
-    //                       <h3>{company.companyName}</h3>
-    //                       <h4>{company.userId}</h4>
-    //                       <button onClick={() => this.removeCompany(company.id)}>Remove Item</button>
-    //                     </li>
-    //                     </div>
-    //                   )})} </ul>
-    //     <p>Home page for anyone is signed in!</p>
-    //     <button onClick={this.addCompany}>Add company</button>
-    // </div>
-    //         );
-    //     }
-    // }
-
 const authCondition = (authUser) => !!authUser;
 export default withAuthorization(authCondition)(HomePage);
-//export default HomePage;

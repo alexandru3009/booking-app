@@ -1,5 +1,5 @@
 .c-auth-form {
-  width: 500px;
+  width: 400px;
   margin: 50px auto;
   border-radius: 5px;
   padding: 20px;
@@ -7,7 +7,6 @@
   border:none;
   border-bottom: .6rem solid darken(purple, 10%);
   box-sizing:border-box;
-  border-radius: 5px;
 }
 
 .i-input-auth {
@@ -48,4 +47,14 @@
   position:fixed;
   top:5px;
   right:10px;
+}
+
+.button-show-hide {
+  font-weight: bold;
+  width:23%;
+  color:black;
+  height:40px;
+  font-size:10pt;
+  border-radius:5px;
+  cursor:pointer;
 }

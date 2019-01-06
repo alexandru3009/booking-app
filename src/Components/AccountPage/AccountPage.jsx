@@ -1,4 +1,5 @@
 import React from 'react';
+import './AccountPage.css';
 import AdminChangePassword from '../auth/ChangePassword';
 import AuthUserContext from '../Authentication/AuthUserContext';
 import withAuthorization from '../Authentication/withAuthorization';
@@ -34,25 +35,21 @@ class AccountPage extends React.Component {
             <AuthUserContext.Consumer>
             {authUser =>
                 <React.Fragment>
-                <div>
-                    
-                    <ul>    {this.state.users.map((user) => {
+                <div className="account-data">
+                       {this.state.users.map((user) => {
                                   return (
                                     <div key={user.id}>
                                     {user.id === authUser.uid ?
-                                    <div><li>
-                                      <p>Company ID:{user.id}</p>
-                                      <h3>Description:{user.lastName}</h3>
-                                      <h3>Name:{user.firstName}</h3>
-                                      <h4>User ID:{user.id}</h4>
-                                    </li></div> : null }
+                                    <div>
+                                      <h3><em>Last name:</em> {user.lastName} </h3>
+                                      <h3><em>First name:</em> {user.firstName} </h3>
+                                      <h4><em>Email:</em> {authUser.email} </h4>
+                                      <h4><em>User ID:</em> {user.id} </h4>
+                                    </div> : null }
                                     </div>
-                                  )})} </ul>
-                    <p>Home page for anyone is signed in!</p>
-                    <button onClick={this.addCompany}>Add company</button>
+                                  )})} 
                 </div>
-                <h4>Email:{authUser.email}</h4>
-                <h5>ID:{authUser.uid}</h5>
+                
                 <AdminChangePassword history={this.props.history} />
                 </React.Fragment>
             }

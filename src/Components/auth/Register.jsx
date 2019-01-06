@@ -217,7 +217,7 @@ isNotValid = () => {
             placeholder="Your password here" 
             value={passwordOne}
             onChange={this.onChange}/>
-            <button  onClick={this.showHide}>
+            <button  onClick={this.showHide} className="button-show-hide">
             {passType === 'input' ? 'Hide' : 'Show'}
             </button>
           </label>

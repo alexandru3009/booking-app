@@ -59,7 +59,7 @@ class AddCompany extends React.Component {
                     <div>
                         <input type="file" accept ="/image" name="companyLogo" value={companyLogo} placeholder="Add your company logo" onChange={this.onChange} />
                     </div>
-                        <button type="submit" className="button-company" disabled={this.isInvalid} >Add company</button>
+                        <button type="submit" className="button-company" disabled={isInvalid} >Add company</button>
                 </form>
             </div>
         );
