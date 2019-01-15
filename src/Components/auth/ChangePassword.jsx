@@ -56,7 +56,7 @@ class ChangePassword extends React.Component {
                             <input type={passType} name="passwordOne" value={passwordOne} placeholder="password" 
                             onChange={this.onChange} className="i-input-auth"/>
                         </label>
-                        <button  onClick={this.showHide} class="button-show-hide">
+                        <button  onClick={this.showHide} className="button-show-hide">
                         {passType === 'input' ? 'Hide' : 'Show'}
                         </button>
                     </div>   
