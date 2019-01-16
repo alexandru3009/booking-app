@@ -22,7 +22,8 @@ const withAuthentication = (Component) => {
             const { authUser } = this.state;
             return (
                 <div>
-                    <AuthUserContext.Provider value = {authUser}>
+                    <AuthUserContext.Provider value = {{authUser:authUser
+                    }}>
                        <div> <Component {...this.props} />
                        </div>
                     </AuthUserContext.Provider>

@@ -33,17 +33,17 @@ class AccountPage extends React.Component {
     render() {
         return (
             <AuthUserContext.Consumer>
-            {authUser =>
+            {context =>
                 <React.Fragment>
                 <div className="account-data">
                        {this.state.users.map((user) => {
                                   return (
                                     <div key={user.id}>
-                                    {user.id === authUser.uid ?
+                                    {user.id === context.authUser.uid ?
                                     <div>
                                       <h3><em>Last name:</em> {user.lastName} </h3>
                                       <h3><em>First name:</em> {user.firstName} </h3>
-                                      <h4><em>Email:</em> {authUser.email} </h4>
+                                      <h4><em>Email:</em> {context.authUser.email} </h4>
                                       <h4><em>User ID:</em> {user.id} </h4>
                                     </div> : null }
                                     </div>

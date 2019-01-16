@@ -7,11 +7,11 @@ import AuthUserContext from '../Authentication/AuthUserContext';
 
 const Navigation = () => (
     <AuthUserContext.Consumer>
-        { authUser => 
+        { context => 
             <div className="header-style">
                 <h1>Booking application</h1>
-                { authUser ? null : <img src={book} alt="book" />  }
-                { authUser ? <NavigationAdmin/> : <NavigationPublic/> }
+                { context.authUser ? null : <img src={book} alt="book" />  }
+                { context.authUser ? <NavigationAdmin/> : <NavigationPublic/> }
             </div> 
         } 
     </AuthUserContext.Consumer>

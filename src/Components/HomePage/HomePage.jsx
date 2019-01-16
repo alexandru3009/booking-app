@@ -44,15 +44,15 @@ class HomePage extends React.Component {
     render() {
         return (
             <AuthUserContext.Consumer>
-                {authUser => 
+                {context => 
                 <React.Fragment>
                 <div>
                     <h1>This is my Home Page !</h1>
-                        <p>{authUser.uid}</p>
+                        <p>{context.authUser.uid}</p>
                     <ul>    {this.state.companies.map((company) => {
                                   return (
                                     <div key={company.id}>
-                                    {company.userId === authUser.uid ?
+                                    {company.userId === context.authUser.uid ?
                                     <div><li>
                                       <p>Company ID:{company.id}</p>
                                       <h3>Description:{company.companyDescription}</h3>
