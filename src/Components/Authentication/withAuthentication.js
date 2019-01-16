@@ -8,7 +8,8 @@ const withAuthentication = (Component) => {
         constructor(props) {
             super(props);
             this.state = {
-                authUser:null
+                authUser:null,
+                selectedCompany:undefined
             };
         }
 
@@ -19,10 +20,11 @@ const withAuthentication = (Component) => {
         }
 
         render() {
-            const { authUser } = this.state;
+            const { authUser,selectedCompany } = this.state;
             return (
                 <div>
-                    <AuthUserContext.Provider value = {{authUser:authUser
+                    <AuthUserContext.Provider value = {{authUser:authUser,
+                        selectedCompany:selectedCompany
                     }}>
                        <div> <Component {...this.props} />
                        </div>
