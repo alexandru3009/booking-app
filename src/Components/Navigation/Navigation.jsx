@@ -22,7 +22,7 @@ const NavigationAdmin = () => (
         <div>
             <NavLink to="/home" activeClassName="is-active" >Home</NavLink>
             <NavLink to="/account" activeClassName="is-active"> Account</NavLink>
-            <NavLink to="/addservices" activeClassName="is-active">Add service</NavLink>
+            <NavLink to="/addservice" activeClassName="is-active">Add service</NavLink>
             <NavLink to="/addcompany" activeClassName="is-active">Add company</NavLink>
             <SignOutButton />
         </div>

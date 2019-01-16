@@ -30,7 +30,7 @@ class AddServices extends React.Component {
         return (
             <form className="c-services-form" onSubmit={this.onSubmit}>
                 <h1>Add a new service</h1>
-
+                <p>{this.props.selectedCompany}</p>
                 <b>Service name</b>
                 <div>
                     <label>

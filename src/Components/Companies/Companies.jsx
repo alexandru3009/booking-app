@@ -6,7 +6,7 @@ import AddCompany from './AddCompany';
 const Companies = ({history}) => (
     <AuthUserContext.Consumer>
     {context =>
-        <AddCompany userId={context.authUser.uid} history={history}/>
+        <AddCompany authUser={context.authUser} history={history}/>
     }
     </AuthUserContext.Consumer>
 );

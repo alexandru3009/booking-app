@@ -23,7 +23,7 @@ class AddCompany extends React.Component {
         const company = {
           companyDescription: this.state.companyDescription,
           companyName:this.state.companyName,
-          user: this.props.userId
+          userId: this.props.authUser.uid
         }
         companiesRef.push(company);
         this.setState({
@@ -42,7 +42,6 @@ class AddCompany extends React.Component {
                 <form onSubmit={this.onSubmit} className="c-companies-form">
                     <h1>Add a new company</h1>
                     <b>Company name</b>
-                    <p>{this.props.userId}</p>
                     <div>
                         <label>
                         <input type="text" name="companyName" value={companyName} placeholder="Company name" onChange={this.onChange} className="i-input-company"/>

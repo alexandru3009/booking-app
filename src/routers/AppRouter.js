@@ -10,7 +10,7 @@ import HomePage from '../Components/HomePage/HomePage';
 import AccountPage from '../Components/AccountPage/AccountPage';
 import NotFoundPage from '../Components/NotFoundPage/NotFoundPage';
 import withAuthentication from '../Components/Authentication/withAuthentication';
-import AddServices from '../Components/Services/AddServices';
+import Services from '../Components/Services/Services';
 
 import Companies from '../Components/Companies/Companies'
 
@@ -27,7 +27,7 @@ const AppRouter = () => (
                 <Route path="/register" component={AdminRegister} />
                 <Route path="/recover" component={AdminRecoverPassword} />
                 <Route path="/account" component={AccountPage}/>
-                <Route path="/addservices" component={AddServices}/>
+                <Route path="/addservice" component={Services}/>
                 <Route path="/addcompany" component={Companies}/>
                 <Route component={NotFoundPage} />
             </Switch>

@@ -12,7 +12,6 @@ class AccountPage extends React.Component {
 
     componentDidMount() {
         const usersRef = db.ref('users');
-        console.log(this.state.description)
         usersRef.on('value',(snapshot) => {
           let users = snapshot.val();
           let newState = [];

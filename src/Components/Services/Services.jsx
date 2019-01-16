@@ -1,6 +1,6 @@
 import React from 'react';
 import AuthUserContext from '../Authentication/AuthUserContext';
-import './AddServices';
+import AddServices from './AddServices';
 
 const Services = () => {
     return (
@@ -11,3 +11,5 @@ const Services = () => {
         </AuthUserContext.Consumer>
     )
 }
+
+export default Services;
