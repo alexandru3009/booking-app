@@ -11,13 +11,14 @@ class AddCompany extends React.Component {
             companyDescription:"",
             companyLogo:""
         }
+        this.addCompany = this.addCompany.bind(this);
     }
     
     onChange = (e) => {
         this.setState({[e.target.name] : e.target.value });
     }
 
-    onSubmit = (e) => {
+    addCompany = (e) => {
         e.preventDefault();
         const companiesRef = db.ref('companies');
         const company = {
@@ -39,7 +40,7 @@ class AddCompany extends React.Component {
         const isInvalid = (companyName==="" || companyDescription==="")
         return (
             <div>
-                <form onSubmit={this.onSubmit} className="c-companies-form">
+                <form onSubmit={this.addCompany} className="c-companies-form">
                     <h1>Add a new company</h1>
                     <b>Company name</b>
                     <div>

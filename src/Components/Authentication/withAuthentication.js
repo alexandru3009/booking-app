@@ -9,17 +9,7 @@ const withAuthentication = (Component) => {
             super(props);
             this.state = {
                 authUser:null,
-                selectedCompany:undefined,
-                details:[
-                    {
-                        info:"About",
-                        author:"Alex"
-                    },
-                    {
-                        info:"despre detalii",
-                        author:"Cristy"
-                    }
-                ]
+                selectedCompany:undefined
             };
         }
 
@@ -34,8 +24,7 @@ const withAuthentication = (Component) => {
             return (
                 <div>
                     <AuthUserContext.Provider value = {{authUser:authUser,
-                        selectedCompany:selectedCompany,
-                        details:this.state.details
+                        selectedCompany:selectedCompany
                     }}>
                        <div> <Component {...this.props} />
                        </div>

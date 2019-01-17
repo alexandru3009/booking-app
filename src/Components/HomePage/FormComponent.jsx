@@ -7,6 +7,7 @@ class FormHome extends React.Component {
         this.state = {
             companies:[]
         }
+        this.removeCompany = this.removeCompany.bind(this);
     }
 
     componentDidMount() {
@@ -40,7 +41,6 @@ class FormHome extends React.Component {
     }
 
     addService = (companyId) => {
-        ;
         this.setState({
             selectedCompany:this.state.selectedCompany
         });
