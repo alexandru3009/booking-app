@@ -1,28 +1,41 @@
 import React from 'react';
 import './Services.css';
-import {db} from '../../firebase/index';
+import { db } from '../../firebase/firebase';
 
 class AddServices extends React.Component {
-    state = {
-        serviceName:"",
-        serviceDescription:"",
-        availability:"",
-        spaces:"",
-        duration:"",
-        price:""
+    constructor(props) {
+        super(props);
+        this.state = {
+            serviceName:"",
+            serviceDescription:"",
+            availability:"",
+            spaces:"",
+            duration:"",
+            price:""
+        }
     }
+    
     onChange = (e) => {
         this.setState({[e.target.name] : e.target.value})
     }
 
-    onSubmit = (event) => {
-        event.preventDefault();
-        const {serviceName,serviceDescription,availability,spaces,duration,price} = this.state;
-        
-        db.createService(serviceName,serviceDescription,availability,spaces,duration,price)
-        console.log("Admin Add Service");
-        console.log(this.state);
+    onSubmit = (e) => {
+        e.preventDefault();
+        const serviceRef = db.ref('services');
+        const service = {
+            serviceName: this.state.serviceName,
+            serviceDescription:this.state.serviceDescription,
+            availability:this.state.availability,
+            spaces:this.state.spaces,
+            duration:this.state.duration,
+            price:this.state.price
+        }
+        serviceRef.push(service);
         this.props.history.push("/home");
+    }
+
+    onClick = () => {
+        console.log(this.props.selectedCompany)
     }
     render() {
         const  { serviceDescription,serviceName,duration,spaces,availability,price } = this.state;
@@ -74,6 +87,7 @@ class AddServices extends React.Component {
                 </div>
 
                 <button type="submit" disabled={isInvalid} className="button-service">Add Service</button>
+                <button onClick={this.onClick}>click me</button>
             </form>
         )
     }
