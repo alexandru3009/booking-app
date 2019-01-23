@@ -7,9 +7,13 @@
 .is-active {
     color:blue;
     font-weight: bold;
-    background-color:lightblue;
+    background-color:#add8e6;
 }
 
 .title-style {
     font-style: "Comic Sans MS";
+}
+
+.title {
+    position:center;
 }

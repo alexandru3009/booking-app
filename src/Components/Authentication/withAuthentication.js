@@ -1,9 +1,8 @@
 import React from 'react';
 import { firebase } from '../../firebase/index';
-import AuthUserContext from './AuthUserContext';
 import { db } from '../../firebase/firebase';
+import AuthUserContext from './AuthUserContext';
 
-//Higher Order Component
 const withAuthentication = (Component)  => { 
     class WithAuthentication extends React.Component {
         constructor(props) {
@@ -11,8 +10,7 @@ const withAuthentication = (Component)  => {
             this.state = {
                 authUser:null,
                 users:[],
-                companies:[],
-                selectedCompany:undefined
+                companies:[]
             };
         }
 
@@ -61,32 +59,15 @@ const withAuthentication = (Component)  => {
             const companyRef = db.ref(`/companies/${companyId}`);
             companyRef.remove();
         }
-        
-        addService = (companyId) => {
-            const option = companyId
-            this.setState({
-                selectedCompany:option
-            })
-            
-            console.log(this.state.selectedCompany)
-            //this.state.history.push("/addservice");
-        }
-
-        
-
-        
 
         render() {
-            const { authUser,selectedCompany,users,companies } = this.state;
+            const { authUser,users,companies } = this.state;
             return (
                 <div>
                     <AuthUserContext.Provider value = {{authUser:authUser,
                         users:users,
                         companies:companies,
-                        selectedCompany:selectedCompany,
-                        removeCompany:this.removeCompany,
-                        addService:this.addService,
-                        changeSelectCompany:this.changeSelectCompany
+                        removeCompany:this.removeCompany
                     }}>
                        <div> <Component {...this.props} />
                        </div>

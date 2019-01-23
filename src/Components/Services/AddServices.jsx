@@ -87,7 +87,6 @@ class AddServices extends React.Component {
                 </div>
 
                 <button type="submit" disabled={isInvalid} className="button-service">Add Service</button>
-                <button onClick={this.onClick}>click me</button>
             </form>
         )
     }

@@ -1,0 +1,12 @@
+.remove--item {
+    height:20px;
+    weight:20px
+}
+
+.companies {
+    margin: auto;
+    width: 50%;
+    border: 3px solid white;
+    padding: 10px;
+    text-align: center;
+}
