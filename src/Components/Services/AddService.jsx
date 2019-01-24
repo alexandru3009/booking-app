@@ -42,7 +42,8 @@ class AddService extends React.Component {
             serviceDescription:"",
             availability:"",
             duration:"",
-            price:""
+            price:"",
+            spaces:""
         })
         this.setState({
             companyId:undefined
@@ -51,15 +52,20 @@ class AddService extends React.Component {
     
     render() {
         const { serviceName,serviceDescription,availability,spaces,duration,price } = this.state;
+        const isInvalid = ( serviceName === '' ||
+            serviceDescription === '' || 
+            duration === '' ||
+            price === '' ||
+            spaces === '' || availability === ''
+            );
     return (
         <Modal
         isOpen={!!this.props.selectedCompany}
         onRequestClose={this.props.goBack}
         contentLabel="Selected Option"
         closeTimeoutMS={200}
-        
         >   
-            <form onSubmit={this.onSubmit}>
+            <form onSubmit={this.onSubmit} >
             <h1 className="center">Add your service</h1>
             
             <div className="service-name">
@@ -71,8 +77,8 @@ class AddService extends React.Component {
                     </div>
             </div>
 
-            <div>
-                <b className="service-description">Service description</b>
+            <div className="service-description">
+                <b >Service description</b>
                 <div>
                     <label>
                     <input type="textarea" name="serviceDescription" value={serviceDescription} placeholder="Description" onChange={this.onChange} className="i-textarea-service" />
@@ -80,36 +86,44 @@ class AddService extends React.Component {
                 </div>
             </div>
 
+            <div className="service-duration">
                 <b>Duration</b>
                 <div>
                     <label>
                     <input type="number" name="duration" value={duration} placeholder="Duration" onChange={this.onChange} className="i-input-service"/>
                     </label>
                 </div>
+            </div>
 
+            <div className="service-spaces">
                 <b>Spaces</b>
                 <div>
                     <label>
                     <input type="number" name="spaces" value={spaces} placeholder="Spaces" onChange={this.onChange} className="i-input-service"/>
                     </label>
                 </div>
+            </div>
 
+            <div className="service-price">
                 <b>Price</b>
                 <div>
                     <label>
                     <input type="number" name="price" value={price} placeholder="price" onChange={this.onChange} className="i-input-service"/>
                     </label>
                 </div>
+            </div>
 
+            <div className="service-availability">
                 <b>Availability</b>
                 <div>
                     <label>
                     <input type="number" name="availability" value={availability} placeholder="Availability" onChange={this.onChange} className="i-input-service"/>
                     </label>
                 </div>
-            <button  type="submit" >Okay</button>
+            </div>
+            <button className="button-submit" type="submit" disabled={isInvalid}>Okay</button>
             </form>
-            <button onClick={this.props.goBack}>Back</button>
+            <button onClick={this.props.goBack} className="button-submit-back" >Back</button>
         </Modal>
     )
 }

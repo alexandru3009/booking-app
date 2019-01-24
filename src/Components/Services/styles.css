@@ -16,25 +16,137 @@
     transition: opacity 200ms ease-in-out;
 }
 
+/*Display */
+.account-data {
+    width: 400px;
+    margin: 10px auto;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 20px;
+    background-color: aquamarine;
+  }
+
+.header {
+    position:relative;
+    left:150px
+}
+.id {
+    position:relative;
+    left:100px;
+    top:-15px
+}
+  
+.description {
+    position:relative;
+    top: -30px;
+    font-size: 20px;
+}
+
+.remove-company {
+    position: relative;
+    top :-180px;
+    left:280px;
+    padding:6px;
+    border-radius: 5px;
+    background-color:red;
+    cursor:pointer;
+}
+.add-service {
+    position: relative;
+    top :-180px;
+    left:-130px;
+    padding:6px;
+    border-radius: 5px;
+    color:blue;
+    cursor:pointer;
+}
+
+.center {
+    text-align: center;
+  }
+
+.select-button {
+    background: rgba(255, 255, 255, 0.952);
+    font-weight: bold;
+    width:50%;
+    color:black;
+    border:none;
+    height:55px;
+    font-size:15pt;
+    border-radius:10px;
+    cursor:pointer;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    text-align: center;
+    padding:15px;
+}
+
+.add-company {
+    background: lightblue;
+    font-weight: bold;
+    width:20%;
+    color:black;
+    border:none;
+    height:40px;
+    font-size:10pt;
+    border-radius:10px;
+    cursor:pointer;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    text-align: center;
+    padding:10px;
+}
+
+/* TABLE */
+.table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    font-size:20px;
+}
+.table-body {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.table td, .table thead {
+    border: 3px solid  black;
+    padding: 8px;
+    border-radius:5px;
+  }
+  
+  
+.table thead {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: blue;
+    color: white;
+}
+
+.remove {
+    border-radius:10px;
+    height:40px;
+    background-color: red;
+    cursor:pointer;
+}
+
+.edit {
+    border-radius:10px;
+    height:40px;
+    width:35%;
+    background-color: lightblue;
+    cursor:pointer;
+}
+
+/*AddServices */
 .center {
     align-items: center;
 }
 
-.service-name {
-    position: relative;
-    left: 20px;
-    border: 1px solid white;
-    font-size: 30px;
-}
-.service-description {
-    position: relative;
-    left: 20px;
-    border: 1px solid white;
-    font-size: 30px;
-}
+
 
 .i-textarea-service {
-    height:90px;
+    height:150px;
     border-radius:8px;
     font-size:15pt;
     width: 20%;
@@ -44,5 +156,91 @@
     height:30px;
     border-radius:8px;
     font-size:15pt;
-    width: 20%;
+    width: 280px;
+}
+
+.button-submit {
+    background: rgba(255, 255, 255, 0.952);
+    font-weight: bold;
+    width:23%;
+    color:black;
+    border:none;
+    height:40px;
+    font-size:15pt;
+    border-radius:10px;
+    cursor:pointer;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    text-align: center;
+    position:absolute;
+    left:500px;
+    top:500px;
+}
+.button-submit-back {
+    background: rgba(255, 255, 255, 0.952);
+    font-weight: bold;
+    width:23%;
+    color:black;
+    border:none;
+    height:40px;
+    font-size:15pt;
+    border-radius:10px;
+    cursor:pointer;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    text-align: center;
+    position:absolute;
+    left:500px;
+    top: 550px;
+    padding:15px;
+}
+
+.service-name {
+    position: relative;
+    left: 200px;
+    border: 1px solid white;
+    font-size: 30px;
+}
+.service-description {
+    position: absolute;
+    left: 220px;
+    border: 1px solid white;
+    font-size: 30px;
+    top: 200px;
+    width:1400px;
+    
+}
+
+.service-duration {
+    position: absolute;  
+    width: 100px;
+    top: 105px;         
+    left: 600px;    
+    width:70%;
+    font-size: 30px;
+}
+
+.service-spaces {
+    position: absolute;  
+    width: 100px;
+    top: 195px;         
+    left: 600px;    
+    width:70%;
+    font-size: 30px;
+    border: 1px solid white;
+}
+.service-price {
+    position: absolute;  
+    width: 100px;
+    top: 300px;         
+    left: 600px;    
+    width:70%;
+    font-size: 30px;
+}
+
+.service-availability {
+    position: absolute;  
+    width: 100px;
+    top: 400px;         
+    left: 500px;    
+    width:70%;
+    font-size: 30px;
 }
