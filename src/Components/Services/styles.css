@@ -1,0 +1,48 @@
+.ReactModalPortal > div {
+    opacity: 0;
+}
+
+.ReactModalPortal .ReactModal__Overlay {
+    display:flex;
+    transition: opacity 200ms ease-in-out;
+}
+
+.ReactModalPortal .ReactModal__Overlay--after-open {
+    opacity:1;
+}
+
+.ReactModalPortal .ReactModal__Overlay--before-close {
+    opacity: 0;
+    transition: opacity 200ms ease-in-out;
+}
+
+.center {
+    align-items: center;
+}
+
+.service-name {
+    position: relative;
+    left: 20px;
+    border: 1px solid white;
+    font-size: 30px;
+}
+.service-description {
+    position: relative;
+    left: 20px;
+    border: 1px solid white;
+    font-size: 30px;
+}
+
+.i-textarea-service {
+    height:90px;
+    border-radius:8px;
+    font-size:15pt;
+    width: 20%;
+}
+
+.i-input-service {
+    height:30px;
+    border-radius:8px;
+    font-size:15pt;
+    width: 20%;
+}

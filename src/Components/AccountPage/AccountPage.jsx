@@ -13,11 +13,10 @@ const AccountPage = (props) => (
                     return (
                       <div key={user.id}>
                       { user.id === context.authUser.uid ?
-                      <div>
-                        <h3><em>Last name:</em> {user.lastName} </h3>
-                        <h3><em>First name:</em> {user.firstName} </h3>
-                        <h4><em>Email:</em> {context.authUser.email} </h4>
-                        <h4><em>User ID:</em> {user.id} </h4>
+                      <div className="center">
+                        <h3 > {user.lastName} {user.firstName} </h3>
+                        <h4> {context.authUser.email} </h4>
+                        <h4><em><u>User ID</u></em> {user.id} </h4>
                       </div> : null }
                       </div>
                     )})} 

@@ -13,6 +13,7 @@ const HomePage = ({history}) => (
                         removeCompany={context.removeCompany} 
                         companies={context.companies} 
                         authUserId={context.authUser.uid}
+                        services={context.services}
                     />
                 </React.Fragment>
             }

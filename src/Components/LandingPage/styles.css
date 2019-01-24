@@ -1,23 +1,7 @@
-.no-company {
-    font-size: 20px;
-    color:red;
-}
-
-
-
-.companies {
-    margin: auto;
-    width: 50%;
-    border: 3px solid white;
-    padding: 10px;
-    text-align: center;
-} 
-
 .table {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
-    left:10px;
 }
 .table-body {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;

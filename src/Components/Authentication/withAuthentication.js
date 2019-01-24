@@ -10,7 +10,8 @@ const withAuthentication = (Component)  => {
             this.state = {
                 authUser:null,
                 users:[],
-                companies:[]
+                companies:[],
+                services:[]
             };
         }
 
@@ -53,6 +54,27 @@ const withAuthentication = (Component)  => {
                 companies:newState
             })
             })
+
+            //Services
+            const servicesRef = db.ref('services');
+            servicesRef.on('value',(snapshot) => {
+                let services = snapshot.val();
+                let newState = [];
+                for(let service in services) {
+                    newState.push({
+                        serviceId:service,
+                        serviceName: services[service].serviceName,
+                        serviceDescription: services[service].serviceDescription,
+                        duration:services[service].duration,
+                        price:services[service].price,
+                        spaces:services[service].spaces,
+                        companyId:services[service].companyId
+                    })
+                }
+                this.setState({
+                    services:newState
+                })
+            })
         }
 
         removeCompany = (companyId) => {
@@ -61,12 +83,13 @@ const withAuthentication = (Component)  => {
         }
 
         render() {
-            const { authUser,users,companies } = this.state;
+            const { authUser,users,companies,services } = this.state;
             return (
                 <div>
                     <AuthUserContext.Provider value = {{authUser:authUser,
                         users:users,
                         companies:companies,
+                        services:services,
                         removeCompany:this.removeCompany
                     }}>
                        <div> <Component {...this.props} />
